@@ -50,6 +50,8 @@ APLUS_AUTH: Dict[str, Optional[str]] = {
 }
 
 INSTALLED_APPS = (
+    #prometheus
+    'django_prometheus',
     # 'django.contrib.admin',
     # 'django.contrib.auth',
     # 'django.contrib.contenttypes',
@@ -62,6 +64,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     # 'django.middleware.security.SecurityMiddleware',
     # 'django.contrib.sessions.middleware.SessionMiddleware',
     # 'django.middleware.csrf.CsrfViewMiddleware',
@@ -70,6 +73,7 @@ MIDDLEWARE = [
     # 'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'aplus_auth.auth.django.AuthenticationMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware'
 ]
 
 CACHED_LOADERS = [
